@@ -1,0 +1,22 @@
+!pip install requests pandas openpyxl python-dotenv
+
+from google.colab import files
+uploaded = files.upload()
+
+import os
+from getpass import getpass
+os.environ["VIRUSTOTAL_API_KEY"] = getpass("VirusTotal API Key: ")
+os.environ["AlienVault_OTX_API_KEY"] = getpass("AlienVault_OTX API Key: ")
+os.environ["SHODAN_API_KEY"] = getpass("Shodan API Key: ")
+os.environ["WhoisXML_API_KEY"] = getpass("WhoisXML API Key: ")
+os.environ["DNSdumpster_API_KEY"] = getpass("DNSdumpster API Key: ")
+
+
+target_website = "example.org"
+print("Target Website:", target_website)
+
+!python osint_task1.py example.org
+from google.colab import files
+files.download("osint_report_example_org.xlsx")
+
+
